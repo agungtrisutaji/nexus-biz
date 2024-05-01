@@ -88,16 +88,7 @@
               <div class="row">
                 <div class="col-12">
                   <!-- Default box -->
-                  <div class="card">
-                    <div class="card-body">
-                      {{ $slot }}
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                      Footer
-                    </div>
-                    <!-- /.card-footer-->
-                  </div>
+                  {{ $slot }}
                   <!-- /.card -->
                 </div>
               </div>
@@ -115,10 +106,10 @@
       </div>
     <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <strong>Copyright &copy; 2022 <a href="https://adminlte.io">Agung</a>.</strong>
+            <strong>Copyright &copy; 2024 <a href="https://adminlte.io">Agung</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 3.2.0
+                <b>Version</b> 1.0
             </div>
         </footer>
     </div>

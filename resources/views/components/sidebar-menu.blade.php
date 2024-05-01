@@ -18,4 +18,8 @@
                 <i class="far fa-circle nav-icon"></i>
                 <p>Halaman 3</p>
             </x-sidebar-link>
+            <x-sidebar-link href="/products" active="{{ request()->routeIs('products') }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Halaman 4</p>
+            </x-sidebar-link>
   </nav>

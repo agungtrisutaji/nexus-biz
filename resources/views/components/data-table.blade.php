@@ -1,49 +1,37 @@
 <table id="example2" class="table table-bordered table-hover">
     <thead>
     <tr>
-      <th>Rendering engine</th>
-      <th>Browser</th>
-      <th>Platform(s)</th>
-      <th>Engine version</th>
-      <th>CSS grade</th>
+      <th>Serial Number</th>
+      <th>Model</th>
+      <th>Brand</th>
+      <th>Status</th>
+      <th>Spesification</th>
     </tr>
     </thead>
     <tbody>
     <tr>
-      <td>Trident</td>
-      <td>Internet
-        Explorer 4.0
+      <td>SN00001</td>
+      <td>DELL Latitude 4.0
       </td>
-      <td>Win 95+</td>
-      <td> 4</td>
-      <td>X</td>
+      <td>DELL</td>
+      <td>User</td>
+      <td>Specification</td>
     </tr>
     <tr>
-      <td>Trident</td>
-      <td>Internet
-        Explorer 5.0
+      <td>SN00002</td>
+      <td>DELL Latitude 5.0
       </td>
-      <td>Win 95+</td>
-      <td>5</td>
-      <td>C</td>
+      <td>DELL</td>
+      <td>Sales</td>
+      <td>Specification</td>
     </tr>
     <tr>
-      <td>Trident</td>
-      <td>Internet
-        Explorer 5.5
+      <td>SN00003</td>
+      <td>DELL Latitude 5.5
       </td>
-      <td>Win 95+</td>
-      <td>5.5</td>
-      <td>A</td>
+      <td>DELL</td>
+      <td>Back Up</td>
+      <td>Specification</td>
     </tr>
     </tbody>
-    <tfoot>
-    <tr>
-      <th>Rendering engine</th>
-      <th>Browser</th>
-      <th>Platform(s)</th>
-      <th>Engine version</th>
-      <th>CSS grade</th>
-    </tr>
-    </tfoot>
   </table>
