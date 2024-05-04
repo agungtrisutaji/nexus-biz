@@ -1,3 +1,3 @@
-<div>
-    <h2>Halaman Dua</h2>
+<div class="card">
+	<h2>Halaman Dua</h2>
 </div>
