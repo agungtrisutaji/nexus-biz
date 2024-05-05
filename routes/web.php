@@ -9,6 +9,8 @@ Route::get('/inventories', \App\Livewire\Inventories::class)->name('inventories'
 Route::get('/terminations', \App\Livewire\Terminations::class)->name('terminations');
 Route::get('/forecast', \App\Livewire\Forecast::class)->name('forecast');
 Route::get('/reports', \App\Livewire\Reports::class)->name('reports');
+Route::get('/partnership', \App\Livewire\Partnership::class)->name('partnership');
+Route::post('/parnership', [\App\Livewire\Partnership::class, 'addAddress'])->name('partnership.addAddress');
 
 Route::get('/stocks', \App\Livewire\Stocks\Index::class)->name('stocks.index');
 

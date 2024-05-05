@@ -19,7 +19,7 @@ return new class extends Migration
             $table->longText('detail');
             $table->string('city');
             $table->string('province');
-            $table->string('zip_code');
+            $table->integer('zip_code');
             $table->string('country');
             $table->timestamps();
 
