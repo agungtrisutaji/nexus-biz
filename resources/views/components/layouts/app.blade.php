@@ -33,7 +33,7 @@
 	<link rel="stylesheet" href="{{ asset('lte/plugins/summernote/summernote-bs4.min.css') }}">
 </head>
 
-<body class="hold-transition sidebar-collapse sidebar-mini layout-fixed text-sm">
+<body class="hold-transition sidebar-collapse sidebar-mini layout-fixed text-sm dark-mode">
 	<div class="wrapper">
 		<!-- Navbar -->
 		<x-navigation-menu />
@@ -53,11 +53,7 @@
 					<div class="row">
 						<div class="col-12">
 							<!-- Default box -->
-								@if (isset($exception) && $exception->getStatusCode() == 404)
-									@include('errors.404')
-								@else
 									{{ $slot }}
-								@endif
 							<!-- /.card -->
 						</div>
 					</div>

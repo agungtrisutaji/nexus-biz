@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('service_offers', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('name');
+            $table->string('class');
             $table->string('brand');
             $table->string('model');
             $table->string('cpu');
-            $table->tinyInteger('ram');
-            $table->tinyInteger('hdd')->nullable();
-            $table->tinyInteger('ssd')->nullable();
+            $table->integer('ram');
+            $table->integer('hdd')->nullable();
+            $table->integer('ssd')->nullable();
             $table->string('os');
             $table->string('vga');
             $table->string('display');
-            $table->string('batery');
+            $table->string('battery')->nullable();
             $table->string('price')->nullable();
             $table->string('status')->nullable();
             $table->string('description')->nullable();
