@@ -5,17 +5,17 @@
 		</div>
 		<!-- /.card-header -->
 		<!-- form start -->
-		<form method="post" enctype="multipart/form-data" action="{{ route('partnership.addAddress') }}">
+		<form wire:submit="save">
             @csrf
 			<div class="card-body">
 				<div class="form-group">
 					<label for="company">Pilih Company</label>
-					<select class="form-control" wire:model.live="selectedCompany">
-						<option value="">-- Pilih Company --</option>
-                        @foreach ($companies as $company)
+				    	<select class="form-control" wire:model.live="selectedCompany">
+					    	<option value="">-- Pilih Company --</option>
+                            @foreach ($companies as $company)
                             <option value="{{ $company->id }}">{{ $company->name }}</option>
-                        @endforeach
-					</select>
+                            @endforeach
+                        </select>
                     <div>
                         @if ($addresses)
                             <ul>
@@ -25,58 +25,52 @@
                             </ul>
                         @endif
                     </div>
-					{{-- @error('deviceName')
-                        <span class="text-danger mt-1 d-block">{{ $message }}</span>
-                    @enderror --}}
 				</div>
 				<div class="form-group">
 					<label for="name">Nama Alamat</label>
-					<input type="text" class="form-control" id="name" placeholder="Masukan Nama Alamat">
-					{{-- @error('deviceName')
+					<input type="text" wire:model="name" class="form-control" id="name" placeholder="Masukan Nama Alamat">
+					@error('name')
                         <span class="text-danger mt-1 d-block">{{ $message }}</span>
-                    @enderror --}}
+                    @enderror
 				</div>
 				<div class="form-group">
-					<label for="negara">Negara</label>
-					<input type="text" class="form-control" id="negara" placeholder="Masukan Negara">
-					{{-- @error('deviceKey')
+					<label for="country">Negara</label>
+					<input type="text" wire:model="country" class="form-control" id="country" placeholder="Masukan Negara">
+					@error('country')
                         <span class="text-danger mt-1 d-block">{{ $message }}</span>
-                    @enderror --}}
+                    @enderror
 				</div>
 				<div class="form-group">
 					<label for="province">Provinsi</label>
-					<input type="text" class="form-control" id="province" placeholder="Masukan Provinsi">
-					{{-- @error('deviceKey')
+					<input type="text" wire:model="province" class="form-control" id="province" placeholder="Masukan Provinsi">
+					@error('province')
                         <span class="text-danger mt-1 d-block">{{ $message }}</span>
-                    @enderror --}}
+                    @enderror
 				</div>
 				<div class="form-group">
 					<label for="city">Kota</label>
-					<input type="text" class="form-control" id="city" placeholder="Masukan Kota">
-					{{-- @error('deviceKey')
+					<input type="text" wire:model="city" class="form-control" id="city" placeholder="Masukan Kota">
+					@error('city')
                         <span class="text-danger mt-1 d-block">{{ $message }}</span>
-                    @enderror --}}
+                    @enderror
 				</div>
 				<div class="form-group">
                     <label for="zip_code">Kode Pos</label>
-					<input type="text" class="form-control" id="zip_code" placeholder="Masukan Kode Pos">
-					{{-- @error('deviceKey')
+					<input type="text" wire:model="zip_code" class="form-control" id="zip_code" placeholder="Masukan Kode Pos">
+					@error('zip_code')
                     <span class="text-danger mt-1 d-block">{{ $message }}</span>
-                    @enderror --}}
+                    @enderror
 				</div>
                 <div class="form-group">
                     <label for="detail">Detail Alamat</label>
-                    <textarea type="text" class="form-control" id="detail" placeholder="Masukan Detail Alamat"></textarea>
-                    {{-- @error('deviceKey')
+                    <textarea type="text" wire:model="detail" class="form-control" rows="3" id="detail" placeholder="Masukan Detail Alamat"></textarea>
+                    @error('detail')
                         <span class="text-danger mt-1 d-block">{{ $message }}</span>
-                    @enderror --}}
+                    @enderror
                 </div>
 			</div>
 			<div class="card-footer">
-				<button type="submit" class="btn btn-primary" wire:loading.attr="disabled">Submit</button>
-                <div wire:loading>
-                    Mohon Tunggu...
-                </div>
+				<button type="submit" class="btn btn-primary swalDefaultSuccess">Submit</button>
 			</div>
 		</form>
 	</div>

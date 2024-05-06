@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Addresses;
 
 use Livewire\Component;
 
-class Addresses extends Component
+class Index extends Component
 {
     public function render()
     {

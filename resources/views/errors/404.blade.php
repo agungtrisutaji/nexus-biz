@@ -141,9 +141,9 @@
 		<script src="{{ asset('lte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 		<!-- NexusBizMaster App -->
 		<script src="{{ asset('lte/dist/js/adminlte.js') }}"></script>
-		<!-- NexusBizMaster dashboard demo (This is only for demo purposes) -->
+		<!-- NexusBizMaster dashboard app (This is only for app purposes) -->
 		<script src="{{ asset('lte/dist/js/pages/dashboard.js') }}"></script>
-		<!-- NexusBizMaster for demo purposes -->
-		<script src="{{ asset('lte/dist/js/demo.js') }}"></script>
+		<!-- NexusBizMaster for app purposes -->
+		<script src="{{ asset('lte/dist/js/app.js') }}"></script>
 
 </html>
