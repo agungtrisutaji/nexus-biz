@@ -7,8 +7,8 @@
 		<x-nav-link active="{{ request()->routeIs('home') }}" href="{{ route('home') }}">Home</x-nav-link>
 		<x-nav-link active="{{ request()->routeIs('about') }}" href="{{ route('about') }}">Halaman 1</x-nav-link>
 		<x-nav-link active="{{ request()->routeIs('contact') }}" href="{{ route('contact') }}">Halaman 2</x-nav-link>
-		<x-nav-link active="{{ request()->routeIs('stocks') }}" href="/stocks">Halaman 3</x-nav-link>
-		<x-nav-link active="{{ request()->routeIs('products') }}" href="/products">Halaman 4</x-nav-link>
+		<x-nav-link active="{{ request()->routeIs('stocks.*') }}" href="/stocks">Halaman 3</x-nav-link>
+		<x-nav-link active="{{ request()->routeIs('products.*') }}" href="/products">Halaman 4</x-nav-link>
 	</ul>
 
 	<!-- Right navbar links -->
