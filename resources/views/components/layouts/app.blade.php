@@ -31,6 +31,10 @@
 	<link rel="stylesheet" href="{{ asset('lte/plugins/daterangepicker/daterangepicker.css') }}">
 	<!-- summernote -->
 	<link rel="stylesheet" href="{{ asset('lte/plugins/summernote/summernote-bs4.min.css') }}">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 </head>
 
 <body class="hold-transition sidebar-collapse sidebar-mini layout-fixed text-sm dark-mode">
@@ -105,5 +109,4 @@
 	<script src="{{ asset('lte/dist/js/pages/dashboard.js') }}"></script>
 	<!-- NexusBizMaster for app purposes -->
 	<script src="{{ asset('lte/dist/js/app.js') }}"></script>
-
 </html>
