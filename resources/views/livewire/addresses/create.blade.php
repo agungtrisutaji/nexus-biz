@@ -1,4 +1,8 @@
-<div class="col-6 offset-md-3">
+@extends('components.layouts.app')
+
+@section('content')
+
+<div class="col-6 mx-auto">
 	<div class="card card-primary">
 		<div class="card-header">
 			<h3 class="card-title">Tambah Alamat</h3>
@@ -20,7 +24,7 @@
                         @if ($addresses)
                             <ul>
                                 @foreach ($addresses as $address)
-                                    <li>{{ $address->name }}, {{ $address->city }}, {{ $address->detail }}</li>
+                                    <li>{{ $address->name }}, {{ $address->detail }},  {{ $address->city }}, {{ $address->province }}</li>
                                 @endforeach
                             </ul>
                         @endif
@@ -75,3 +79,4 @@
 		</form>
 	</div>
 </div>
+@endsection
