@@ -5,7 +5,7 @@
 		</div>
 		<!-- /.card-header -->
 		<!-- form start -->
-		<form wire:submit="save">
+		<form wire:submit="save" name="address-form">
             @csrf
 			<div class="card-body">
 				<div class="form-group">
@@ -75,3 +75,17 @@
 		</form>
 	</div>
 </div>
+
+<script>
+    window.addEventListener('alert', event => {
+        let data = event.detail;
+        Swal.fire({
+            title: data.title,
+            icon: data.type,
+            text: data.message,
+            position: data.position,
+            showConfirmButton: data.showConfirmButton,
+            timer: data.timer
+        })
+    })
+</script>

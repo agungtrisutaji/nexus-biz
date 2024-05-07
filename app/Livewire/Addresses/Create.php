@@ -46,7 +46,26 @@ class Create extends Component
         $validate = $this->validate();
 
         $company->addresses()->create($validate);
+
+        if ($company) {
+            $this->dispatch('alert', type: 'success', title: 'Success', message: 'New address added.', position: 'center', timer: 3000, showConfirmButton: false);
+        } else {
+            $this->dispatch('alert', type: 'error', title: 'Error', message: 'Something went wrong.', position: 'center');
+        }
+
         $this->reset(['name', 'country', 'province', 'city', 'detail', 'zip_code']);
+    }
+
+    protected function getMessages()
+    {
+        return [
+            'name.required' => 'Nama alamat harus diisi.',
+            'country.required' => 'Negara harus diisi.',
+            'province.required' => 'Provinsi harus diisi.',
+            'city.required' => 'Kota harus diisi.',
+            'detail.required' => 'Detail alamat harus diisi.',
+            'zip_code.required' => 'Kode pos harus diisi.',
+        ];
     }
 
     public function render()
