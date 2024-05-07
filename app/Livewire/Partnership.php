@@ -32,7 +32,7 @@ class Partnership extends Component
             'newAddress.country' => 'required',
             'newAddress.province' => 'required',
             'newAddress.city' => 'required',
-            'newAddress.zip_code' => 'required',
+            'newAddress.zip' => 'required',
         ]);
 
         Address::create([
@@ -42,7 +42,7 @@ class Partnership extends Component
             'country' => $this->newAddress['country'],
             'province' => $this->newAddress['province'],
             'city' => $this->newAddress['city'],
-            'zip_code' => $this->newAddress['zip_code'],
+            'zip' => $this->newAddress['zip'],
         ]);
 
 

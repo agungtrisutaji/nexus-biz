@@ -1,4 +1,4 @@
-<table id="example2" class="table-bordered table-hover table">
+<table id="example2" class="table-stirped table-hover table">
 	<thead>
 		<tr>
 			<th>Serial Number</th>

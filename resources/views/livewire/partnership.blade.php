@@ -58,8 +58,8 @@
                     @enderror --}}
 				</div>
 				<div class="form-group">
-                    <label for="zip_code">Kode Pos</label>
-					<input type="text" class="form-control" id="zip_code" placeholder="Masukan Kode Pos">
+                    <label for="zip">Kode Pos</label>
+					<input type="text" class="form-control" id="zip" placeholder="Masukan Kode Pos">
 					{{-- @error('deviceKey')
                     <span class="text-danger mt-1 d-block">{{ $message }}</span>
                     @enderror --}}

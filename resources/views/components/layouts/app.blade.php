@@ -109,4 +109,18 @@
 	<script src="{{ asset('lte/dist/js/pages/dashboard.js') }}"></script>
 	<!-- NexusBizMaster for app purposes -->
 	<script src="{{ asset('lte/dist/js/app.js') }}"></script>
+
+    <script>
+        window.addEventListener('alert', event => {
+            let data = event.detail;
+            Swal.fire({
+                title: data.title,
+                icon: data.type,
+                text: data.message,
+                position: data.position,
+                showConfirmButton: data.showConfirmButton,
+                timer: data.timer
+            })
+        })
+    </script>
 </html>

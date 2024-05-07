@@ -29,7 +29,7 @@ class AddressSeeder extends Seeder
                 'city' => 'Kariangau',
                 'province' => 'Bengkulu',
                 'country' => 'Indonesia',
-                'detail' => 'Jln. Sultan Hasanuddin RT. 01', 'zip_code' => '76134'
+                'detail' => 'Jln. Sultan Hasanuddin RT. 01', 'zip' => '76134'
             ],
             [
                 'name' => 'Jakarta-Cilandak',
@@ -37,7 +37,7 @@ class AddressSeeder extends Seeder
                 'province' => 'DKI Jakarta',
                 'country' => 'Indonesia',
                 'detail' => 'Gedung TMT 1, 8th Fl, Jl. Raya Cilandak KKO No.1, Cilandak Timur, Pasar Minggu',
-                'zip_code' => '12560'
+                'zip' => '12560'
             ],
             [
                 'name' => 'HQ - Pakuwon Mall Jogja',
@@ -45,7 +45,7 @@ class AddressSeeder extends Seeder
                 'province' => 'Daerah Istimewa Yogyakarta',
                 'country' => 'Indonesia',
                 'detail' => '3rd Floor, Jl. Ring Road Utara, Kaliwaru, Condongcatur, Depok',
-                'zip_code' => '55283'
+                'zip' => '55283'
             ],
             [
                 'name' => 'Muara Enim',
@@ -53,7 +53,7 @@ class AddressSeeder extends Seeder
                 'province' => 'Sumatera Selatan',
                 'country' => 'Indonesia',
                 'detail' => 'Jl Lintas Prabumulih, RT 04 RW 08, Kel. Muara Enim',
-                'zip_code' => '31311'
+                'zip' => '31311'
             ],
             [
                 'name' => 'Rukan Mahkota Ancol',
@@ -61,7 +61,7 @@ class AddressSeeder extends Seeder
                 'province' => 'DKI Jakarta',
                 'country' => 'Indonesia',
                 'detail' => 'Jl. RE Martadinata Rukan Mahkota Ancol Blok D No.12 RT.11/RW.11, Ancol, Pademangan Bar., Kec. Pademangan',
-                'zip_code' => '14440'
+                'zip' => '14440'
             ],
             [
                 'name' => 'Rukan Mahkota Ancol',
@@ -69,7 +69,7 @@ class AddressSeeder extends Seeder
                 'province' => 'DKI Jakarta',
                 'country' => 'Indonesia',
                 'detail' => 'Jl. RE Martadinata Rukan Mahkota Ancol Blok D No.11 RT.11/RW.11, Ancol, Pademangan Bar., Kec. Pademangan',
-                'zip_code' => '14440'
+                'zip' => '14440'
             ]
         ];
 
