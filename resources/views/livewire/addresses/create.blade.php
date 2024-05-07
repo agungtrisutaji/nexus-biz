@@ -28,43 +28,43 @@
 				</div>
 				<div class="form-group">
 					<label for="name">Nama Alamat</label>
-					<input type="text" wire:model="name" class="form-control" id="name" placeholder="Masukan Nama Alamat">
-					@error('name')
+					<input type="text" wire:model="form.name" class="form-control" id="name" placeholder="Masukan Nama Alamat">
+					@error('form.name')
                         <span class="text-danger mt-1 d-block">{{ $message }}</span>
                     @enderror
 				</div>
 				<div class="form-group">
 					<label for="country">Negara</label>
-					<input type="text" wire:model="country" class="form-control" id="country" placeholder="Masukan Negara">
-					@error('country')
+					<input type="text" wire:model="form.country" class="form-control" id="country" placeholder="Masukan Negara">
+					@error('form.country')
                         <span class="text-danger mt-1 d-block">{{ $message }}</span>
                     @enderror
 				</div>
 				<div class="form-group">
 					<label for="province">Provinsi</label>
-					<input type="text" wire:model="province" class="form-control" id="province" placeholder="Masukan Provinsi">
-					@error('province')
+					<input type="text" wire:model="form.province" class="form-control" id="province" placeholder="Masukan Provinsi">
+					@error('form.province')
                         <span class="text-danger mt-1 d-block">{{ $message }}</span>
                     @enderror
 				</div>
 				<div class="form-group">
 					<label for="city">Kota</label>
-					<input type="text" wire:model="city" class="form-control" id="city" placeholder="Masukan Kota">
-					@error('city')
+					<input type="text" wire:model="form.city" class="form-control" id="city" placeholder="Masukan Kota">
+					@error('form.city')
                         <span class="text-danger mt-1 d-block">{{ $message }}</span>
                     @enderror
 				</div>
 				<div class="form-group">
-                    <label for="zip_code">Kode Pos</label>
-					<input type="text" wire:model="zip_code" class="form-control" id="zip_code" placeholder="Masukan Kode Pos">
-					@error('zip_code')
+                    <label for="zip">Kode Pos</label>
+					<input type="text" wire:model="form.zip" class="form-control" id="zip" placeholder="Masukan Kode Pos">
+					@error('form.zip')
                     <span class="text-danger mt-1 d-block">{{ $message }}</span>
                     @enderror
 				</div>
                 <div class="form-group">
                     <label for="detail">Detail Alamat</label>
-                    <textarea type="text" wire:model="detail" class="form-control" rows="3" id="detail" placeholder="Masukan Detail Alamat"></textarea>
-                    @error('detail')
+                    <textarea type="text" wire:model="form.detail" class="form-control" rows="3" id="detail" placeholder="Masukan Detail Alamat"></textarea>
+                    @error('form.detail')
                         <span class="text-danger mt-1 d-block">{{ $message }}</span>
                     @enderror
                 </div>
@@ -75,17 +75,3 @@
 		</form>
 	</div>
 </div>
-
-<script>
-    window.addEventListener('alert', event => {
-        let data = event.detail;
-        Swal.fire({
-            title: data.title,
-            icon: data.type,
-            text: data.message,
-            position: data.position,
-            showConfirmButton: data.showConfirmButton,
-            timer: data.timer
-        })
-    })
-</script>
