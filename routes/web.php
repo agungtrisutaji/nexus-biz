@@ -12,6 +12,7 @@ Route::get('/reports', \App\Livewire\Reports::class)->name('reports');
 
 Route::get('/addresses', \App\Livewire\Addresses::class)->name('addresses');
 
+Route::get('/units', \App\Livewire\Units\Index::class)->name('units.index');
 
 Route::get('/partnership', \App\Livewire\Partnership::class)->name('partnership');
 Route::post('/parnership', [\App\Livewire\Partnership::class, 'addAddress'])->name('partnership.addAddress');

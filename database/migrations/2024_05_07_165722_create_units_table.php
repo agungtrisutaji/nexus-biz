@@ -14,9 +14,9 @@ return new class extends Migration
     {
         Schema::create('units', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('serial_number')->unique();
+            $table->string('serial')->unique();
             $table->char('service_offer_id');
-            $table->string('status')->default(DefaultStatus::AVAILABEL->value);
+            $table->string('status')->default(DefaultStatus::AVAILABEL);
             $table->timestamps();
 
             $table->foreign('service_offer_id')->references('id')->on('service_offers')->onDelete('cascade');

@@ -13,7 +13,7 @@ class ServiceOffer extends Model
 
     protected $guarded = [];
 
-    public function unit(): HasMany
+    public function units(): HasMany
     {
         return $this->hasMany(Unit::class);
     }

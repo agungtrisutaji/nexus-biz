@@ -17,7 +17,7 @@ class UnitFactory extends Factory
     public function definition(): array
     {
         return [
-            "serial_number" => fake()->regexify('SN[0-9]{4}'),
+            "serial" => fake()->regexify('SN[0-9]{6}'),
             "service_offer_id" => \App\Models\ServiceOffer::inRandomOrder()->first()->id,
         ];
     }

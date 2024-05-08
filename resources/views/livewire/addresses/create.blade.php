@@ -1,7 +1,3 @@
-@extends('components.layouts.app')
-
-@section('content')
-
 <div class="col-6 mx-auto">
 	<div class="card card-primary">
 		<div class="card-header">
@@ -79,4 +75,3 @@
 		</form>
 	</div>
 </div>
-@endsection
