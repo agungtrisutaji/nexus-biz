@@ -4,7 +4,7 @@ namespace App\Enums;
 
 enum DefaultStatus: int
 {
-    case BARU = 1;
+    case AVAILABEL = 1;
     case STAGING = 2;
     case DELIVERY = 3;
     case DEPLOYED = 4;
@@ -13,7 +13,7 @@ enum DefaultStatus: int
     public function getLabel(): string
     {
         $labels = [
-            self::BARU => 'Baru',
+            self::AVAILABEL => 'Available',
             self::STAGING => 'Staging',
             self::DELIVERY => 'Delivery',
             self::DEPLOYED => 'Deployed',
@@ -25,7 +25,7 @@ enum DefaultStatus: int
     public function getDescription(): string
     {
         $descriptions = [
-            self::BARU => 'Unit baru',
+            self::AVAILABEL => 'Unit baru',
             self::STAGING => 'Unit sedang proses staging',
             self::DELIVERY => 'Unit dalam pengiriman',
             self::DEPLOYED => 'Unit di deployed',
@@ -38,7 +38,7 @@ enum DefaultStatus: int
     public function getColor(): string
     {
         $colors = [
-            self::BARU => 'primary',
+            self::AVAILABEL => 'primary',
             self::STAGING => 'warning',
             self::DELIVERY => 'info',
             self::DEPLOYED => 'success',
@@ -51,7 +51,7 @@ enum DefaultStatus: int
     public static function getNextStatus($value)
     {
         $nextStatus = [
-            self::BARU->value => self::STAGING,
+            self::AVAILABEL->value => self::STAGING,
             self::STAGING->value => self::DELIVERY,
             self::DELIVERY->value => self::DEPLOYED,
             self::DEPLOYED->value => self::DEPLOYED,
