@@ -1,7 +1,8 @@
 @extends('components.layouts.app')
 
-@section('content')
-
+@section('content_body')
+@section('content_header_title', 'Home')
+@section('content_header_subtitle', 'Welcome')
 <div>
 	<!-- Small boxes (Stat box) -->
 	<div class="row">
