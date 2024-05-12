@@ -3,9 +3,8 @@
 @section('content_body')
 @section('content_header_title', 'Home')
 @section('content_header_subtitle', 'Welcome')
-<div>
 	<!-- Small boxes (Stat box) -->
-	<div class="row">
+    <div class="row">
 		<div class="col-lg-3 col-6">
 			<!-- small box -->
 			<div class="small-box bg-info">
@@ -66,7 +65,7 @@
 			</div>
 		</div>
 		<!-- ./col -->
-	</div>
+    </div>
 	<!-- /.row -->
 	<!-- Main row -->
 	<div class="row">
@@ -204,9 +203,6 @@
 			<!-- /.card -->
 		</section>
 		<!-- /.Left col -->
-		<!-- right col (We are only adding the ID to make the widgets sortable)-->
-
-		<!-- right col -->
-	</div>
+    </div>
 	<!-- /.row (main row) -->
 @endsection

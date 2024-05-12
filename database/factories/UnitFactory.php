@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\DefaultStatus;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,8 @@ class UnitFactory extends Factory
     public function definition(): array
     {
         return [
-            "serial" => fake()->regexify('SN[0-9]{6}'),
+            "serial" => fake()->regexify('SN-[0-9]{6}-[0-9]{2}'),
+            'status'  => $this->faker->randomElement(DefaultStatus::cases())->value,
             "service_offer_id" => \App\Models\ServiceOffer::inRandomOrder()->first()->id,
         ];
     }

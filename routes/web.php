@@ -1,10 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', \App\Livewire\Home::class)->name('home');
-Route::get('/about', \App\Livewire\About::class)->name('about');
-Route::get('/contact', \App\Livewire\Contact::class)->name('contact');
 Route::get('/inventories', \App\Livewire\Inventories::class)->name('inventories');
 Route::get('/terminations', \App\Livewire\Terminations::class)->name('terminations');
 Route::get('/forecast', \App\Livewire\Forecast::class)->name('forecast');
@@ -14,13 +13,6 @@ Route::get('/addresses', \App\Livewire\Addresses::class)->name('addresses');
 
 Route::get('/units', \App\Livewire\Units\Index::class)->name('units.index');
 
-Route::get('/partnership', \App\Livewire\Partnership::class)->name('partnership');
-Route::post('/parnership', [\App\Livewire\Partnership::class, 'addAddress'])->name('partnership.addAddress');
-
-Route::get('/stocks', \App\Livewire\Stocks\Index::class)->name('stocks.index');
-
-Route::get('/products', \App\Livewire\Products\Index::class)->name('products.index');
-Route::get('/products/create', \App\Livewire\Products\Create::class)->name('products.create');
 
 Route::get('/bills', \App\Livewire\Bills::class)->name('bills');
 
