@@ -38,8 +38,16 @@ class Inventories extends Component
             $data[] = [
                 $unit->serial,
                 $serviceOffer->class,
+                $serviceOffer->brand,
+                $serviceOffer->model,
+                $serviceOffer->cpu,
+                $serviceOffer->ram,
+                $serviceOffer->hdd,
+                $serviceOffer->ssd,
+                $serviceOffer->os,
+                $serviceOffer->vga,
+                $serviceOffer->display,
                 $unit->status->value,
-                $this->prepareButtons(),
             ];
         }
 
@@ -50,8 +58,6 @@ class Inventories extends Component
     {
         return [
             'data' => $this->prepareData(),
-            'order' => [[1, 'asc']],
-            'columns' => [null, null, null, ['orderable' => false]],
         ];
     }
 
