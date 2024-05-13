@@ -1,6 +1,6 @@
-<div class="col-6 mx-auto">
-	<div class="card card-primary">
-		<div class="card-header">
+<div class="container w-50">
+	<div class="card card-primary mw-75">
+		<div class="card-header bg-dark">
 			<h3 class="card-title">Tambah Unit</h3>
 		</div>
 		<!-- /.card-header -->
