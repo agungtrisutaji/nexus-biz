@@ -16,9 +16,11 @@ enum UnitStatus: int
     case TERMINATION = 5;
     case BACKUP = 6;
     case USED = 7;
-    case REDEPLOY = 8;
+    case REFURBISH = 8;
     case SOLD = 9;
     case SCRAP = 10;
+    case SHORTTERM = 11;
+    case EXTEND = 12;
 
     public function getLabel(): string
     {
@@ -30,9 +32,11 @@ enum UnitStatus: int
             self::TERMINATION => 'Termination',
             self::BACKUP => 'Backup',
             self::USED => 'Used',
-            self::REDEPLOY => 'Redeploy',
+            self::REFURBISH => 'Refurbish',
             self::SOLD => 'Sold',
             self::SCRAP => 'Scrap',
+            self::SHORTTERM => 'Short Term',
+            self::EXTEND => 'Extend',
         ];
 
         return $labels[$this->value];
@@ -48,9 +52,11 @@ enum UnitStatus: int
             self::TERMINATION => 'Unit termination',
             self::BACKUP => 'Unit backup',
             self::USED => 'Unit dalam pemakaian Internal',
-            self::REDEPLOY => 'Unit Dideploy Kembali',
+            self::REFURBISH => 'Unit Dideploy Kembali',
             self::SOLD => 'Unit Terjual',
             self::SCRAP => 'Unit Rusak',
+            self::SHORTTERM => 'Unit Short Term',
+            self::EXTEND => 'Unit Extend',
         ];
 
         return $descriptions[$this->value];
@@ -66,9 +72,11 @@ enum UnitStatus: int
             self::TERMINATION => 'warning',
             self::BACKUP => 'warning',
             self::USED => 'success',
-            self::REDEPLOY => 'success',
+            self::REFURBISH => 'success',
             self::SOLD => 'danger',
             self::SCRAP => 'dark',
+            self::SHORTTERM => 'success',
+            self::EXTEND => 'warning',
         ];
 
         return $colors[$this->value];
