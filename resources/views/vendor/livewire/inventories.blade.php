@@ -18,26 +18,13 @@ $config["lengthMenu"] = [ 10, 50, 100, 500];
 @endphp
 
 {{-- Minimal example / fill data using the component slot --}}
-<x-adminlte-datatable id="dataTable" :heads="$heads" head-theme="dark" :config="$config" hoverable bordered compressed with-buttons responsive>
+<x-adminlte-datatable id="dataTable" :heads="$heads" head-theme="dark" :config="$config" hoverable bordered compressed with-buttons>
     @foreach($config['data'] as $row)
         <tr>
             @foreach($row as $cell)
-                <td>{!! $cell !!}</td>
+                <td>{{ $cell }}</td>
             @endforeach
         </tr>
     @endforeach
 </x-adminlte-datatable>
 @endsection
-
-@push('js')
-    <script>
-        new DataTable('#myTable', {
-    footerCallback: function (tr, data, start, end, display) {
-        $(tr)
-            .find('th')
-            .eq(0)
-            .html('Starting index is ' + start);
-    }
-});
-    </script>
-@endpush

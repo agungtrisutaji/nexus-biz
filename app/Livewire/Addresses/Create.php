@@ -50,6 +50,6 @@ class Create extends Component
 
     public function render()
     {
-        return view('livewire.addresses.create');
+        return view('livewire::addresses.create');
     }
 }

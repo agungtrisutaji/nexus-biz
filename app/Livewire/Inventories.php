@@ -59,6 +59,6 @@ class Inventories extends Component
     {
         $this->loadData();
 
-        return view('livewire.inventories', ['config' => $this->prepareConfig()]);
+        return view('livewire::inventories', ['config' => $this->prepareConfig()]);
     }
 }

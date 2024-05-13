@@ -64,6 +64,6 @@ class Create extends Component
 
     public function render()
     {
-        return view('livewire.units.create');
+        return view('livewire::units.create');
     }
 }

@@ -11,6 +11,6 @@ class Show extends Component
 
     public function render()
     {
-        return view('livewire.users.show')->title('User: ' . $this->user->name);
+        return view('livewire::users.show')->title('User: ' . $this->user->name);
     }
 }

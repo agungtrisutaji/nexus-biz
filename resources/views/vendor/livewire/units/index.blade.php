@@ -1,6 +1,6 @@
 @extends('components.layouts.app')
 
-@section('content')
+@section('content_body')
 
 
 <div>

@@ -8,6 +8,6 @@ class Forecast extends Component
 {
     public function render()
     {
-        return view('livewire.forecast');
+        return view('livewire::forecast');
     }
 }
