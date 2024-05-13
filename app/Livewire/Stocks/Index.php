@@ -12,6 +12,6 @@ class Index extends Component
 {
     public function render()
     {
-        return view('livewire.stocks.index');
+        return view('livewire::stocks.index');
     }
 }

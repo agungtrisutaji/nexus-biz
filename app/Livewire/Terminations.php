@@ -8,6 +8,6 @@ class Terminations extends Component
 {
     public function render()
     {
-        return view('livewire.terminations');
+        return view('livewire::terminations');
     }
 }
