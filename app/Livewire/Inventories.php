@@ -11,16 +11,16 @@ class Inventories extends Component
     public $units;
     public $serviceOffers;
 
+    private function prepareButtons()
+    {
+        return '<nobr>' . $this->generateButton('Edit', 'pen', 'primary') . $this->generateButton('Delete', 'trash', 'danger') . $this->generateButton('Details', 'eye', 'teal') . '</nobr>';
+    }
+
     private function generateButton($action, $icon, $color)
     {
         return '<button class="btn btn-xs btn-default text-' . $color . ' mx-1 shadow" title="' . $action . '">
                 <i class="fa fa-lg fa-fw fa-' . $icon . '"></i>
             </button>';
-    }
-
-    private function prepareButtons()
-    {
-        return '<nobr>' . $this->generateButton('Edit', 'pen', 'primary') . $this->generateButton('Delete', 'trash', 'danger') . $this->generateButton('Details', 'eye', 'teal') . '</nobr>';
     }
 
     private function loadData()
@@ -48,6 +48,7 @@ class Inventories extends Component
                 $serviceOffer->vga,
                 $serviceOffer->display,
                 $unit->status->value,
+                $this->prepareButtons()
             ];
         }
 
@@ -58,6 +59,8 @@ class Inventories extends Component
     {
         return [
             'data' => $this->prepareData(),
+            'order' => [[1, 'asc']],
+            'columns' => [null, null, null, ['orderable' => false]],
         ];
     }
 
