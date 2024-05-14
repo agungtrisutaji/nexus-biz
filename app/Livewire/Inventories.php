@@ -10,18 +10,9 @@ class Inventories extends Component
 {
     public $units;
     public $serviceOffers;
-
-    private function prepareButtons()
-    {
-        return '<nobr>' . $this->generateButton('Edit', 'pen', 'primary') . $this->generateButton('Delete', 'trash', 'danger') . $this->generateButton('Details', 'eye', 'teal') . '</nobr>';
-    }
-
-    private function generateButton($action, $icon, $color)
-    {
-        return '<button class="btn btn-xs btn-default text-' . $color . ' mx-1 shadow" title="' . $action . '">
-                <i class="fa fa-lg fa-fw fa-' . $icon . '"></i>
-            </button>';
-    }
+    public $editUnit = '';
+    public $deleteUrl = '';
+    public $detailUrl = '';
 
     private function loadData()
     {
@@ -48,7 +39,7 @@ class Inventories extends Component
                 $serviceOffer->vga,
                 $serviceOffer->display,
                 $unit->status->value,
-                $this->prepareButtons()
+                $unit->id,
             ];
         }
 
@@ -68,6 +59,11 @@ class Inventories extends Component
     {
         $this->loadData();
 
-        return view('livewire::inventories', ['config' => $this->prepareConfig()]);
+        return view('livewire::inventories', [
+            'config' => $this->prepareConfig(),
+            'editUnit' => $this->editUnit,
+            'deleteUrl' => $this->deleteUrl,
+            'detailUrl' => $this->detailUrl,
+        ]);
     }
 }
