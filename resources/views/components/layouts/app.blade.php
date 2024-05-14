@@ -8,12 +8,6 @@
 
 {{-- Extend and customize the page content header --}}
 
-@section('preloader')
-    <i class="spinner-border" style="width: 4rem; height: 4rem;" role="status" >
-    </i>
-    <h4 class="visually-hidden">Loading...</h4>
-@stop
-
 @section('content_header')
     @hasSection('content_header_title')
         <h1 class="text-muted">
@@ -32,7 +26,12 @@
 {{-- Rename section content to content_body --}}
 
 @section('content')
-    @yield('content_body')
+@section('preloader')
+<i class="spinner-border" style="width: 4rem; height: 4rem;" role="status" >
+</i>
+<h4 class="visually-hidden">Loading...</h4>
+@stop
+@yield('content_body')
 @stop
 
 {{-- Create a common footer --}}
@@ -64,7 +63,11 @@
                 position: data.position,
                 showConfirmButton: data.showConfirmButton,
                 timer: data.timer
-            })
+            }).then(function(){
+                if(data.type !== 'error'){
+                    location.reload();
+                }
+            });
         })
     });
 
