@@ -6,7 +6,12 @@
 
 {{-- Minimal example / fill data using the component slot --}}
 <div class="container-fluid mb-2 rounded-lg border bg-white p-2 shadow-lg">
-	<table id="unitTable" class="table-sm table-bordered table-hover p-2 mx-auto table-compressed table">
+    		<!-- Button trigger modal -->
+		<button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#exampleModal">
+			Add Unit
+		</button>
+		<livewire:units.create></livewire:units.create>
+        <table id="unitTable" class="table-sm table-bordered table-hover p-2 mx-auto table-compressed table">
 		<thead class="thead-dark">
 			<tr>
 				<th scope="col">Serial Number</th>
@@ -93,14 +98,14 @@
 		$('#unitTable tbody').on('click', '.edit', function() {
 			var id = $(this).attr("id").match(/\d+/)[0];
 			var data = $('#unitTable').DataTable().row(id).data();
-			console.log(data[0]);
+			console.log(data);
 		});
 
 
 		$('#unitTable tbody').on('click', '.delete', function() {
 			var id = $(this).attr("id").match(/\d+/)[0];
 			var data = $('#unitTable').DataTable().row(id).data();
-			console.log(data[5]);
+			console.log(data);
 		});
 	});
 </script>
