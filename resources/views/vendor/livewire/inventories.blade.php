@@ -3,15 +3,14 @@
 @section('content_body')
 @section('content_header_title', 'Inventory')
 
-
 {{-- Minimal example / fill data using the component slot --}}
 <div class="container-fluid mb-2 rounded-lg border bg-white p-2 shadow-lg">
-    		<!-- Button trigger modal -->
-		<button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#exampleModal">
-			Add Unit
-		</button>
-		<livewire:units.create></livewire:units.create>
-        <table id="unitTable" class="table-sm table-bordered table-hover p-2 mx-auto table-compressed table">
+	<!-- Button trigger modal -->
+	<button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
+		Add Unit
+	</button><br><br>
+	<livewire:units.create></livewire:units.create>
+	<table id="unitTable" class="table-sm table-bordered table-hover table-compressed mx-auto table p-2">
 		<thead class="thead-dark">
 			<tr>
 				<th scope="col">Serial Number</th>
@@ -41,15 +40,19 @@
 	</table>
 </div>
 @endsection
+
 @push('js')
 <script>
+	var editUrl = '{{ $editUrl }}';
+	var deleteUrl = '{{ $deleteUrl }}';
+	var detailUrl = '{{ $detailUrl }}';
 	$(document).ready(function() {
-		new DataTable('#unitTable', {
+		var table = new DataTable('#unitTable', {
 			stateSave: true,
 			stateSaveParams: function(settings, data) {
 				delete data.search;
 			},
-            responsive: true,
+			responsive: true,
 			layout: {
 				topStart: {
 					buttons: [
@@ -78,34 +81,54 @@
 				},
 				bottomStart: 'pageLength',
 			},
-			columnDefs: [
-                {
+			columnDefs: [{
 					visible: false,
 					targets: [2, 3, 4, 5, 6, 7, 8, 9, 10]
 				},
 				{
-					targets: 'action',
-					render: function(data, type, row, meta) {
-						return '<button class="edit btn btn-xs btn-default text-primary mx-1 shadow" id=e-"' + meta.row +
-							'" value="Edit"><i class="fa fa-lg fa-fw fa-pen"></i></button><button type="button" class="delete btn btn-xs btn-default text-danger mx-1 shadow" id=d-"' + meta
-							.row + '" value="Delete"><i class="fa fa-lg fa-fw fa-trash"></i></button><button type="button" class="delete btn btn-xs btn-default text-teal mx-1 shadow" id=d-"' + meta
-							.row + '" value="Delete"><i class="fa fa-lg fa-fw fa-eye"></i></button>';
+					targets: -1, // Kolom terakhir (-1)
+					data: 12, // Indeks data untuk kolom terakhir (unit->id)
+					render: function(data, type, row) {
+						if (type === 'display') {
+							return `
+                    <div class="btn-group btn-group-sm">
+                        <a href="#" class="btn btn-primary edit-btn" data-id="${data}"><i class="fas fa-edit"></i></a>
+                        <a href="#" class="btn btn-danger delete-btn" data-id="${data}"><i class="fas fa-trash"></i></a>
+                        <a href="#" class="btn btn-success detail-btn" data-id="${data}"><i class="fas fa-eye"></i></a>
+                    </div>
+                `;
+						}
+						return data;
 					},
 				},
 			]
 		});
 
-		$('#unitTable tbody').on('click', '.edit', function() {
-			var id = $(this).attr("id").match(/\d+/)[0];
-			var data = $('#unitTable').DataTable().row(id).data();
-			console.log(data);
+		$('#unitTable').on('click', '.edit-btn', function() {
+			var unitId = $(this).data('id');
+			var url = editUrl + '/' + unitId;
+			var data = table.row($(this).parents('tr')).data();
+			// Lakukan tindakan edit dengan menggunakan URL dan data
+			console.log('Edit URL:', url);
+			console.log('Data:', data);
 		});
 
+		$('#unitTable').on('click', '.delete-btn', function() {
+			var unitId = $(this).data('id');
+			var url = deleteUrl + '/' + unitId;
+			var data = table.row($(this).parents('tr')).data();
+			// Lakukan tindakan delete dengan menggunakan URL dan data
+			console.log('Delete URL:', url);
+			console.log('Data:', data);
+		});
 
-		$('#unitTable tbody').on('click', '.delete', function() {
-			var id = $(this).attr("id").match(/\d+/)[0];
-			var data = $('#unitTable').DataTable().row(id).data();
-			console.log(data);
+		$('#unitTable').on('click', '.detail-btn', function() {
+			var unitId = $(this).data('id');
+			var url = detailUrl + '/' + unitId;
+			var data = table.row($(this).parents('tr')).data();
+			// Lakukan tindakan detail dengan menggunakan URL dan data
+			console.log('Detail URL:', url);
+			console.log('Data:', data);
 		});
 	});
 </script>
