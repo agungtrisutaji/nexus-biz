@@ -11,13 +11,12 @@
 				</div>
 				<!-- form start -->
 				<div class="modal-body">
-					@csrf
 					<div class="form-group">
 						<label for="service">Pilih Service</label>
 						<select class="form-control" wire:model.live="selectedService">
 							<option value="">-- Pilih Service --</option>
 							@foreach ($services as $service)
-								<option value="{{ $service->id }}">{{ $service->class }}</option>
+								<option value="{{ $service->id }}">{{ $service->model }} - {{ $service->class }}</option>
 							@endforeach
 						</select>
 					</div>

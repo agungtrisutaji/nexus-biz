@@ -9,8 +9,10 @@ use App\Models\ServiceOffer;
 class Inventories extends Component
 {
     public $units;
+    public $service;
+    public $serviceDetail;
     public $serviceOffers;
-    public $editUnit = '';
+    public $editUrl = '';
     public $deleteUrl = '';
     public $detailUrl = '';
 
@@ -46,6 +48,25 @@ class Inventories extends Component
         return $data;
     }
 
+    public function editUnit($unitId)
+    {
+        // Logika untuk menangani aksi edit unit dengan ID $unitId
+        dump('edited' . $unitId . 'done');
+    }
+
+    public function deleteUnit($unitId)
+    {
+        // Logika untuk menangani aksi delete unit dengan ID $unitId
+    }
+
+    public function detailUnit($unitId)
+    {
+        $this->units = Unit::where("service_offer_id", $unitId)->get();
+        $this->service = ServiceOffer::find($unitId);
+        $this->serviceDetail = ServiceOffer::where("id", $unitId)->get();
+        dd($this->serviceDetail);
+    }
+
     private function prepareConfig()
     {
         return [
@@ -61,7 +82,7 @@ class Inventories extends Component
 
         return view('livewire::inventories', [
             'config' => $this->prepareConfig(),
-            'editUnit' => $this->editUnit,
+            'editUrl' => $this->editUrl,
             'deleteUrl' => $this->deleteUrl,
             'detailUrl' => $this->detailUrl,
         ]);

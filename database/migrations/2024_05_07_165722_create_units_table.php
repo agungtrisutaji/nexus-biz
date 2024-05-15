@@ -16,7 +16,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('serial')->unique();
             $table->char('service_offer_id');
-            $table->string('status')->default(DefaultStatus::AVAILABEL);
+            $table->string('status')->default(DefaultStatus::AVAILABLE);
             $table->timestamps();
 
             $table->foreign('service_offer_id')->references('id')->on('service_offers')->onDelete('cascade');
