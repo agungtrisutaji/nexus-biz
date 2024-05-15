@@ -4,7 +4,7 @@ namespace App\Enums;
 
 enum DefaultStatus: string
 {
-    case AVAILABEL = 'Availabel';
+    case AVAILABLE = 'Available';
     case STAGING = 'Staging';
     case DELIVERY = 'Delivery';
     case DEPLOYED = 'Deployed';

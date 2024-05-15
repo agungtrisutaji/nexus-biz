@@ -63,11 +63,7 @@
                 position: data.position,
                 showConfirmButton: data.showConfirmButton,
                 timer: data.timer
-            }).then(function(){
-                if(data.type !== 'error'){
-                    location.reload();
-                }
-            });
+            })
         })
     });
 
