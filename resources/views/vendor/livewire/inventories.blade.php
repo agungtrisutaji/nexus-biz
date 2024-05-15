@@ -6,9 +6,12 @@
 {{-- Minimal example / fill data using the component slot --}}
 <div class="container-fluid mb-2 rounded-lg border p-2 shadow-sm">
 	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
-		Add Unit
-	</button><br><br>
+	<div class="col-md-12">
+		<button type="button" class="btn btn-success waves-effect waves-light float-right" data-toggle="modal"
+			data-target="#exampleModal">
+			<span class="btn-label"><i class="fa fa-plus"></i>
+			</span>Add Unit</button><br><br>
+	</div>
 	<livewire:units.create></livewire:units.create>
 	<table id="unitTable" class="table-sm table-bordered table-hover table-compressed mx-auto table p-2">
 		<thead class="thead-dark">
@@ -43,11 +46,11 @@
 				<td></td>
 			</tr>
 		</thead>
-		<tbody class="text-center">
-			@foreach ($config['data'] as $row)
+		<tbody>
+			@foreach ($actions as $row)
 				<tr>
 					@foreach ($row as $cell)
-						<td>{{ $cell }}</td>
+						<td >{!! $cell !!}</td>
 					@endforeach
 				</tr>
 			@endforeach
@@ -67,7 +70,11 @@
 			stateSaveParams: function(settings, data) {
 				delete data.search;
 			},
-            columns:[null, null, null, null, null, null, null, null, null, null, null, null, {searchable: false}],
+			columns: [{
+				data: serial
+			}, null, null, null, null, null, null, null, null, null, null, null, {
+				searchable: false
+			}],
 			responsive: true,
 			orderCellsTop: true,
 			layout: {
@@ -102,28 +109,6 @@
 					visible: false,
 					targets: [2, 3, 4, 5, 6, 7, 8, 9, 10]
 				},
-				{
-					targets: -1, // Kolom terakhir (-1)
-					data: 12, // Indeks data untuk kolom terakhir (unit->id)
-					render: function(data, type, row) {
-						// console.log('row', row)
-						// console.log('type', type)
-						// console.log('data', data)
-						if (type === 'display') {
-							return `
-                    <div class="btn-group btn-group-sm">
-                        <button wire:clik="editUnit" class="btn btn-primary edit-btn"><i class="fas fa-edit"></i></button>
-                        <button href="#" class="btn btn-danger delete-btn" data-id="${data}"><i class="fas fa-trash"></i></button>
-                        <button href="#" class="btn btn-success detail-btn" data-id="${data}"><i class="fas fa-eye"></i></button>
-                    </div>
-                `;
-						}
-						return data;
-					},
-				},
-				{
-
-				}
 			],
 			initComplete: function() {
 				var table = this.api();
@@ -131,12 +116,6 @@
 				// Add filtering
 				table.columns().every(function() {
 					var column = this;
-
-					// var input = $('<input type="text" />')
-					// 	.appendTo($("thead tr:eq(1) td").eq(this.index()))
-					// 	.on("keyup", function() {
-					// 		column.search($(this).val()).draw();
-					// 	});
 
 					var select = $('<select><option value=""></option></select>')
 						.appendTo($(column.header()))
