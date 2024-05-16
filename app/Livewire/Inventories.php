@@ -28,6 +28,13 @@ class Inventories extends Component
 
         foreach ($this->units as $unit) {
             $serviceOffer = $this->serviceOffers->firstWhere('id', $unit->service_offer_id);
+            $actions = "
+            <div class='btn-group btn-group-sm'>
+                <button :wire:click='editUnit({$unit->id})' class='btn btn-primary btn-sm'><i class='fas fa-edit'></i></button>
+                <button wire:click='deleteUnit({$unit->id})' class='btn btn-danger btn-sm'><i class='fas fa-trash'></i></button>
+                <button wire:click='detailUnit({$unit->id})' class='btn btn-success btn-sm'><i class='fas fa-eye'></i></button>
+            </div>
+        ";
             $data[] = [
                 $unit->serial,
                 $serviceOffer->class,
@@ -41,7 +48,7 @@ class Inventories extends Component
                 $serviceOffer->vga,
                 $serviceOffer->display,
                 $unit->status->value,
-                $unit->id,
+                $actions
             ];
         }
 
@@ -50,21 +57,25 @@ class Inventories extends Component
 
     public function editUnit($unitId)
     {
-        // Logika untuk menangani aksi edit unit dengan ID $unitId
-        dump('edited' . $unitId . 'done');
+        // Logika untuk mengedit unit dengan ID $unitId
+        // Misalnya, redirect ke halaman edit unit
+        return redirect()->route('units.edit', $unitId);
     }
 
     public function deleteUnit($unitId)
     {
-        // Logika untuk menangani aksi delete unit dengan ID $unitId
+        // Logika untuk menghapus unit dengan ID $unitId
+        // Misalnya, menghapus unit dari database dan memperbarui tampilan tabel
+        $unit = Unit::findOrFail($unitId);
+        $unit->delete();
+        $this->loadData();
     }
 
     public function detailUnit($unitId)
     {
-        $this->units = Unit::where("service_offer_id", $unitId)->get();
-        $this->service = ServiceOffer::find($unitId);
-        $this->serviceDetail = ServiceOffer::where("id", $unitId)->get();
-        dd($this->serviceDetail);
+        // Logika untuk melihat detail unit dengan ID $unitId
+        // Misalnya, redirect ke halaman detail unit
+        return redirect()->route('units.show', $unitId);
     }
 
     private function prepareConfig()
@@ -85,6 +96,7 @@ class Inventories extends Component
             'editUrl' => $this->editUrl,
             'deleteUrl' => $this->deleteUrl,
             'detailUrl' => $this->detailUrl,
+            'actions' => $this->prepareData(),
         ]);
     }
 }

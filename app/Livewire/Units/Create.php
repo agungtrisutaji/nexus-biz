@@ -34,7 +34,6 @@ class Create extends Component
     {
         if (is_null($this->service)) {
             $this->dispatch('alert', type: 'error', title: 'Error', message: 'Pilihkan Service terlebih dahulu', position: 'center', timer: 3000, showConfirmButton: true);
-            return;
         }
 
         $service = $this->service;
@@ -45,11 +44,12 @@ class Create extends Component
         } catch (QueryException $e) {
             if ($e->errorInfo[1] == 1062 && strpos($e->errorInfo[2], 'units.units_serial_unique') !== false) {
                 // Handle duplicate serial entry error
-                $this->dispatch('alert', type: 'error', title: 'Error', message: 'Serial number sudah Terdaftar!', position: 'center', timer: 5000, showConfirmButton: true);
+                $this->dispatch('alert', type: 'error', title: 'Error', message: 'Serial number sudah Terdaftar!', position: 'center', timer: 3000, showConfirmButton: true);
             } else {
                 // Handle other database errors
                 $this->dispatch('alert', type: 'error', title: 'Error', message: 'Something went wrong.', position: 'center');
             }
+            return;
         }
 
         if ($service) {
