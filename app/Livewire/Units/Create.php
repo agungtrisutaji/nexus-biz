@@ -39,8 +39,9 @@ class Create extends Component
         $service = $this->service;
         $validate = $this->validate();
 
+        $unit = $service->units()->create($validate);
         try {
-            $service->units()->create($validate);
+            $unit;
         } catch (QueryException $e) {
             if ($e->errorInfo[1] == 1062 && strpos($e->errorInfo[2], 'units.units_serial_unique') !== false) {
                 // Handle duplicate serial entry error
@@ -51,14 +52,16 @@ class Create extends Component
             }
             return;
         }
-
-        if ($service) {
-            $this->dispatch('alert', type: 'success', title: 'Success', message: 'Unit baru berhasil ditambahkan.', position: 'center', timer: 3000, showConfirmButton: true);
-        } else {
-            $this->dispatch('alert', type: 'error', title: 'Error', message: 'Something went wrong.', position: 'center');
-        }
-
         $this->form->reset();
+        $this->dispatch('unitAdded', $unit->id);
+        return $unit;
+
+        // if ($service) {
+        //     $this->dispatch('alert', type: 'success', title: 'Success', message: 'Unit baru berhasil ditambahkan.', position: 'center', timer: 3000, showConfirmButton: true);
+        // } else {
+        //     $this->dispatch('alert', type: 'error', title: 'Error', message: 'Something went wrong.', position: 'center');
+        // }
+
     }
 
     public function render()

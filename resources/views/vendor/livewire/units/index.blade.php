@@ -6,28 +6,33 @@
 		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
 			Launch demo modal
 		</button>
-		<livewire:units.create></livewire:units.create>
+		<livewire:units.create/>
 		<div class="container mb-2 rounded-lg border bg-white p-2 shadow-lg">
 			<table id="unitTable" class="table-sm table-border table-hover table-compressed table-striped table" style="width:100%">
 				<thead class="thead-dark">
 					<tr>
-						<th scope="col">Name</th>
-						<th scope="col">Position</th>
-						<th scope="col">Office</th>
-						<th scope="col">Age</th>
-						<th scope="col">Start date</th>
-						<th scope="col" class="action">Salary</th>
+                        <th scope="col">Serial Number</th>
+                        <th scope="col">Service</th>
+                        <th scope="col">Brand</th>
+                        <th scope="col">Model</th>
+                        <th scope="col">CPU</th>
+                        <th scope="col">RAM</th>
+                        <th scope="col">HDD</th>
+                        <th scope="col">SSD</th>
+                        <th scope="col">Operating System</th>
+                        <th scope="col">VGA</th>
+                        <th scope="col">Display</th>
+                        <th scope="col">Status</th>
+                        <th scope="col" class="action">Action</th>
 					</tr>
 				</thead>
+                <tfoot>
+                    <td></td>
+                </tfoot>
 				<tbody>
-					<tr>
-						<td>Cara Stevens</td>
-						<td>Sales Assistant</td>
-						<td>New York</td>
-						<td>46</td>
-						<td>2011-12-06</td>
-						<td>$145,600</td>
-					</tr>
+                    @foreach ($units as $unit)
+                        <livewire:units.row wire:poll :unit="$unit" wire:key="{{ $unit->id }}"/>
+                    @endforeach
 				</tbody>
 			</table>
 		</div>
@@ -38,6 +43,7 @@
 	<script>
 		$(document).ready(function() {
 			new DataTable('#unitTable', {
+                ordering:false,
 				layout: {
 					topStart: {
 						buttons: [
@@ -64,7 +70,7 @@
 							type: 'full_numbers'
 						},
 					},
-					bottomStart: 'pageLength',
+					// bottomStart: 'pageLength',
 				},
 				columnDefs: [{
 					targets: 'action',
