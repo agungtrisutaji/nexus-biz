@@ -1,5 +1,6 @@
 <!-- Modal -->
-<div wire:ignore.self class="modal fade" id="importModal" tabindex="-1" aria-labelledby="importModalLabel" aria-hidden="true">
+<div wire:ignore.self class="modal fade" id="importModal" tabindex="-1" aria-labelledby="importModalLabel"
+	aria-hidden="true">
 	<form wire:submit="import" name="unit-form">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -9,11 +10,14 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-                @if (session()->has('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
+				@if (session()->has('success'))
+					<div class="alert alert-success">
+						{{ session('success') }}
+					</div>
+				@endif
+				@error('importFile')
+					<div class="alert alert-danger">{{ $message }}</div>
+				@enderror
 				<!-- form start -->
 				<div class="modal-body">
 					<div class="form-group">
@@ -25,27 +29,26 @@
 							@endforeach
 						</select>
 					</div>
-                    <div >
-                        @if ($serviceDetail !== null)
-                            @foreach ($serviceDetail as $service)
-                            <span>{{ $service['id'] }} | {{ $service['brand'] }} | {{ $service['model'] }} | RAM {{ $service['ram']}} |
-                                @if ($service['hdd'] !== null) HDD {{ $service['hdd'] }} @endif
-                                @if ($service['ssd'] !== null) SSD {{ $service['ssd'] }} @endif
-                            </span>
-                            @endforeach
-                        @endif
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <div class="custom-file">
-                              <input type="file" wire:model="importFile" name="importFile" class="custom-file-input" id="inputGroupFile02" aria-describedby="inputGroupFile02">
-                              <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
-                            </div>
-                          </div>
-                        @error('importFile')
-                            <span class="text-danger d-block mt-1">{{ $message }}</span>
-                        @enderror
-                    </div>
+					<div>
+						@if ($serviceDetail !== null)
+							@foreach ($serviceDetail as $service)
+								<span>{{ $service['id'] }} | {{ $service['brand'] }} | {{ $service['model'] }} | RAM {{ $service['ram'] }} |
+									@if ($service['hdd'] !== null)
+										HDD {{ $service['hdd'] }}
+									@endif
+									@if ($service['ssd'] !== null)
+										SSD {{ $service['ssd'] }}
+									@endif
+								</span>
+							@endforeach
+						@endif
+					</div>
+					<div class="custom-file">
+						<input type="file" wire:model="importFile" name="importFile" class="custom-file-input" id="inputFileUpload"
+							aria-describedby="inputFileUpload">
+						<label class="custom-file-label" for="inputFileUpload" wire:ignore>Choose file</label>
+					</div>
+
 				</div>
 				<div class="modal-footer">
 					<button type="submit" class="btn btn-primary swalDefaultSuccess">Submit</button>
@@ -57,12 +60,18 @@
 </div>
 
 @push('js')
-<script>
-    $('#inputGroupFile02').on('change',function(){
-        //get the file name
-        var fileName = $(this).val();
-        //replace the "Choose a file" label
-        $(this).next('.custom-file-label').addClass("selected").html(fileName);
-    })
-</script>
+	<script>
+function updateFileLabel() {
+    const $input = $('#inputFileUpload');
+    const fileFullPath = $input.val();
+    const fileName = fileFullPath.replace(/^.*[\\\/]/, '');
+    const $label = $input.next('.custom-file-label');
+    $label.html(fileName);
+    $label.addClass('selected');
+}
+
+$(document).on('change', '#inputFileUpload', function() {
+    updateFileLabel();
+});
+	</script>
 @endpush
