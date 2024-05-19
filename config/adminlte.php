@@ -114,7 +114,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => true,
+        'enabled' => false,
         'mode' => 'cwrapper',
         'img' => [
             'asset' => 'true',

@@ -19,7 +19,7 @@ class Unit extends Model
         'status' => 'string',
     ];
 
-    public function service(): BelongsTo
+    public function serviceOffer(): BelongsTo
     {
         return $this->belongsTo(ServiceOffer::class);
     }
