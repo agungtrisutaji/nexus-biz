@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('units', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('serial')->unique();
-            $table->char('service_offer_id');
+            $table->unsignedBigInteger('service_offer_id');
             $table->string('status')->default(DefaultStatus::AVAILABLE);
             $table->timestamps();
 
