@@ -1,14 +1,19 @@
 <!-- Modal -->
-<div wire:ignore.self class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<form wire:submit="save" name="unit-form">
+<div wire:ignore.self class="modal fade" id="importModal" tabindex="-1" aria-labelledby="importModalLabel" aria-hidden="true">
+	<form wire:submit="import" name="unit-form">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Tambah Unit</h5>
+					<h5 class="modal-title" id="importModalLabel">Tambah Unit</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
+                @if (session()->has('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 				<!-- form start -->
 				<div class="modal-body">
 					<div class="form-group">
@@ -16,7 +21,7 @@
 						<select class="form-control" wire:model.live="selectedService">
 							<option value="">-- Pilih Service --</option>
 							@foreach ($services as $service)
-								<option value="{{ $service->id }}">{{ $service['id'] }} | {{ $service->model }} - {{ $service->class }}</option>
+								<option value="{{ $service->id }}">{{ $service->model }} - {{ $service->class }}</option>
 							@endforeach
 						</select>
 					</div>
@@ -30,20 +35,18 @@
                             @endforeach
                         @endif
                     </div>
-					<div class="form-group">
-						<label for="serial">Serial Number</label>
-						<input type="text" wire:model="form.serial" class="form-control" id="serial"
-							placeholder="Masukan Serial Number">
-						@error('form.serial')
-							<span class="text-danger d-block mt-1">{{ $message }}</span>
-						@enderror
-					</div>
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <div class="custom-file">
+                              <input type="file" wire:model="importFile" name="importFile" class="custom-file-input" id="inputGroupFile02" aria-describedby="inputGroupFile02">
+                              <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                            </div>
+                          </div>
+                        @error('importFile')
+                            <span class="text-danger d-block mt-1">{{ $message }}</span>
+                        @enderror
+                    </div>
 				</div>
-                <div class="col-md-12">
-                    <button type="button" class="btn btn-success waves-effect waves-light float-right" data-dismiss="modal" data-toggle="modal" data-target="#importModal">
-                        <span class="btn-label"><i class="fas fa-fw fa-file-excel"></i>
-                    </span>Batch Import Unit</button><br><br>
-                </div>
 				<div class="modal-footer">
 					<button type="submit" class="btn btn-primary swalDefaultSuccess">Submit</button>
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -55,10 +58,11 @@
 
 @push('js')
 <script>
-    // document.addEventListener('livewire:load', function () {
-    //     Livewire.on('refreshPage', function () {
-    //         location.reload();
-    //     });
-    // });
+    $('#inputGroupFile02').on('change',function(){
+        //get the file name
+        var fileName = $(this).val();
+        //replace the "Choose a file" label
+        $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    })
 </script>
 @endpush
