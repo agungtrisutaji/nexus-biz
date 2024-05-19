@@ -6,7 +6,11 @@
 		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
 			Launch demo modal
 		</button>
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#importModal">
+			import
+		</button>
 		<livewire:units.create/>
+		<livewire:units.import/>
 		<div class="container mb-2 rounded-lg border bg-white p-2 shadow-lg">
 			<table id="unitTable" class="table-sm table-border table-hover table-compressed table-striped table" style="width:100%">
 				<thead class="thead-dark">

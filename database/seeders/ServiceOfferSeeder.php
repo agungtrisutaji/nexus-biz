@@ -15,6 +15,7 @@ class ServiceOfferSeeder extends Seeder
     {
         $services = [
             [
+                'id' => '101',
                 'class' => 'Laptop General V.10',
                 'brand' => 'HP',
                 'model' => 'Probook 440 G9',
@@ -27,6 +28,7 @@ class ServiceOfferSeeder extends Seeder
                 'os' => 'Windows 11 Pro x64',
             ],
             [
+                'id' => '102',
                 'class' => 'Laptop General ET Tools V.09',
                 'brand' => 'HP',
                 'model' => 'Probook 440 G9',
@@ -39,6 +41,7 @@ class ServiceOfferSeeder extends Seeder
                 'os' => 'Windows 10 Pro x64',
             ],
             [
+                'id' => '103',
                 'class' => 'Laptop Executive V.10',
                 'brand' => 'HP',
                 'model' => 'EliteBook 630 G9',
@@ -51,6 +54,7 @@ class ServiceOfferSeeder extends Seeder
                 'os' => 'Windows 11 Pro x64',
             ],
             [
+                'id' => '104',
                 'class' => 'Laptop Performance V.10',
                 'brand' => 'HP',
                 'model' => 'Zbook Power G9',
@@ -63,6 +67,7 @@ class ServiceOfferSeeder extends Seeder
                 'os' => 'Windows 11 Pro x64',
             ],
             [
+                'id' => '105',
                 'class' => 'Laptop Performance V.10 (New)',
                 'brand' => 'HP',
                 'model' => 'Zbook Power G10',
@@ -75,6 +80,7 @@ class ServiceOfferSeeder extends Seeder
                 'os' => 'Windows 11 Pro x64',
             ],
             [
+                'id' => '106',
                 'class' => 'Laptop Performance Non-Graphical V.02',
                 'brand' => 'HP',
                 'model' => 'Probook 440 G9',
@@ -87,6 +93,7 @@ class ServiceOfferSeeder extends Seeder
                 'os' => 'Windows 11 Pro x64',
             ],
             [
+                'id' => '107',
                 'class' => 'Desktop General v.09',
                 'brand' => 'HP',
                 'model' => 'Prodesk 400 Tower G9',
@@ -98,6 +105,7 @@ class ServiceOfferSeeder extends Seeder
                 'os' => 'Windows 11 Pro x64',
             ],
             [
+                'id' => '108',
                 'class' => 'Desktop General V.10',
                 'brand' => 'HP',
                 'model' => 'Prodesk 400 Tower G9',
@@ -109,6 +117,7 @@ class ServiceOfferSeeder extends Seeder
                 'os' => 'Windows 11 Pro x64',
             ],
             [
+                'id' => '109',
                 'class' => 'Desktop Performance Graphical V.07',
                 'brand' => 'HP',
                 'model' => 'Z2 Tower G9',
@@ -120,6 +129,7 @@ class ServiceOfferSeeder extends Seeder
                 'os' => 'Windows 11 Pro x64',
             ],
             [
+                'id' => '110',
                 'class' => 'Desktop Performance Non-Graphical V.03',
                 'brand' => 'DELL',
                 'model' => 'Optiplex 5090',
@@ -131,6 +141,7 @@ class ServiceOfferSeeder extends Seeder
                 'os' => 'Windows 10 Pro x64',
             ],
             [
+                'id' => '111',
                 'class' => 'LAPTOP GENERAL TTD V.02',
                 'brand' => 'DELL',
                 'model' => 'Latitude 5440',
@@ -143,6 +154,7 @@ class ServiceOfferSeeder extends Seeder
                 'os' => 'Windows 11 Pro x64',
             ],
             [
+                'id' => '112',
                 'class' => 'Laptop Executive (TTD) V.01',
                 'brand' => 'DELL',
                 'model' => 'Latitude 5330',
@@ -155,6 +167,7 @@ class ServiceOfferSeeder extends Seeder
                 'os' => 'Windows 11 Pro x64',
             ],
             [
+                'id' => '113',
                 'class' => 'LAPTOP EXCEUTIVE TTD V.02',
                 'brand' => 'DELL',
                 'model' => 'Latitude 5340',
@@ -167,6 +180,7 @@ class ServiceOfferSeeder extends Seeder
                 'os' => 'Windows 11 Pro x64',
             ],
             [
+                'id' => '114',
                 'class' => 'DESKTOP GENERAL TTD V.02',
                 'brand' => 'DELL',
                 'model' => 'OptiPlex Plus 7010 SFF',

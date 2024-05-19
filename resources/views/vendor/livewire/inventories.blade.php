@@ -12,23 +12,24 @@
 			<span class="btn-label"><i class="fa fa-plus"></i>
 			</span>Add Unit</button><br><br>
 	</div>
-	<livewire:units.create></livewire:units.create>
+		<livewire:units.import/>
+        <livewire:units.create/>
 	<table id="unitTable" class="table-sm table-bordered table-hover table-compressed mx-auto table p-2">
 		<thead class="thead-dark">
 			<tr>
-				<th scope="col">Serial Number</th>
-				<th scope="col">Service</th>
-				<th scope="col">Brand</th>
-				<th scope="col">Model</th>
-				<th scope="col">CPU</th>
-				<th scope="col">RAM</th>
-				<th scope="col">HDD</th>
-				<th scope="col">SSD</th>
-				<th scope="col">Operating System</th>
-				<th scope="col">VGA</th>
-				<th scope="col">Display</th>
-				<th scope="col">Status</th>
-				<th scope="col" class="action">Action</th>
+				<th>Serial Number</th>
+				<th>Service</th>
+				<th>Brand</th>
+				<th>Model</th>
+				<th>CPU</th>
+				<th>RAM</th>
+				<th>HDD</th>
+				<th>SSD</th>
+				<th>Operating System</th>
+				<th>VGA</th>
+				<th>Display</th>
+				<th>Status</th>
+				<th class="action">Action</th>
 			</tr>
 			<tr>
 				<td></td>
@@ -84,17 +85,28 @@
 						{
 							className: 'btn-default btn-outline-primary',
 							text: `<i class="fas fa-fw fa-lg fa-file-csv text-primary"></i>`,
-							extend: 'csv'
+							extend: 'csvHtml5',
+                            exportOptions: {
+                            columns: ':visible'
+                            }
 						},
 						{
 							className: 'btn-default btn-outline-success',
 							text: `<i class="fas fa-fw fa-lg fa-file-excel text-success"></i>`,
-							extend: 'excel'
+							extend: 'excelHtml5',
+                            exportOptions: {
+                            columns: ':visible'
+                            }
 						},
 						{
 							className: 'btn-default btn-outline-danger',
 							text: `<i class="fas fa-fw fa-lg fa-file-pdf text-danger"></i>`,
-							extend: 'pdf'
+							extend: 'pdfHtml5',
+                            orientation: 'landscape',
+                            pageSize: 'LEGAL',
+                            exportOptions: {
+                            columns: ':visible'
+                            }
 						},
 					]
 				},
