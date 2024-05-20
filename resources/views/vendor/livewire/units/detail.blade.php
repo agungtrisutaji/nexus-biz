@@ -10,7 +10,6 @@
 
 @section('content_body')
 	<div>
-        {{ dump($this->unit) }}
 		<div class="container-fluid mb-2 bg-white rounded-lg border p-5 shadow-sm">
 				<form>
 					<div class="form-row">

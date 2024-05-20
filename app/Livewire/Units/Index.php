@@ -22,15 +22,6 @@ class Index extends Component
         return redirect()->route('units.edit', $unitId);
     }
 
-    public function deleteUnit($unitId)
-    {
-        dump($unitId);
-        // Logika untuk menghapus unit dengan ID $unitId
-        // Misalnya, menghapus unit dari database dan memperbarui tampilan tabel
-        $unit = Unit::findOrFail($unitId);
-        $unit->delete();
-        $this->loadData();
-    }
 
     public function detailUnit($unitId)
     {
@@ -40,9 +31,7 @@ class Index extends Component
         return redirect()->route('units.show', $unitId);
     }
 
-    // public function updateList($unit)
-    // {
-    // }
+
     public function render()
     {
         return view('livewire::units.index', [
