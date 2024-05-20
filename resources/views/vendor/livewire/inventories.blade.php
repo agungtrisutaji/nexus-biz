@@ -6,14 +6,30 @@
 {{-- Minimal example / fill data using the component slot --}}
 <div class="container-fluid mb-2 rounded-lg border p-2 shadow-sm">
 	<!-- Button trigger modal -->
-	<div class="col-md-12">
-		<button type="button" class="btn btn-success waves-effect waves-light float-right" data-toggle="modal"
-			data-target="#exampleModal">
+	<div class="d-flex justify-content-between mb-2">
+		<button class="btn btn-info" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false"
+			aria-controls="multiCollapseExample1">Filter</button>
+		<button type="button" class="btn btn-success waves-effect waves-light" data-toggle="modal" data-target="#exampleModal">
 			<span class="btn-label"><i class="fa fa-plus"></i>
-			</span>Add Unit</button><br><br>
+			</span>Add Unit</button>
 	</div>
-		<livewire:units.import/>
-        <livewire:units.create/>
+
+	<livewire:units.import />
+	<livewire:units.create />
+
+	<div class="row">
+		<div class="col">
+			<div class="multi-collapse collapse" id="multiCollapseExample1">
+				<div class="card card-body">
+					<form>
+						<div class="form-group" id="columnFilters">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<table id="unitTable" class="table-sm table-bordered table-hover table-compressed mx-auto table p-2">
 		<thead class="thead-dark">
 			<tr>
@@ -31,27 +47,12 @@
 				<th>Status</th>
 				<th class="action">Action</th>
 			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
 		</thead>
 		<tbody>
 			@foreach ($actions as $row)
 				<tr>
 					@foreach ($row as $cell)
-						<td >{!! $cell !!}</td>
+						<td>{!! $cell !!}</td>
 					@endforeach
 				</tr>
 			@endforeach
@@ -62,9 +63,6 @@
 
 @push('js')
 <script>
-	let editUrl = '{{ $editUrl }}';
-	let deleteUrl = '{{ $deleteUrl }}';
-	let detailUrl = '{{ $detailUrl }}';
 	$(document).ready(function() {
 		let table = new DataTable('#unitTable', {
 			stateSave: true,
@@ -86,27 +84,27 @@
 							className: 'btn-default btn-outline-primary',
 							text: `<i class="fas fa-fw fa-lg fa-file-csv text-primary"></i>`,
 							extend: 'csvHtml5',
-                            exportOptions: {
-                            columns: ':visible'
-                            }
+							exportOptions: {
+								columns: ':visible'
+							}
 						},
 						{
 							className: 'btn-default btn-outline-success',
 							text: `<i class="fas fa-fw fa-lg fa-file-excel text-success"></i>`,
 							extend: 'excelHtml5',
-                            exportOptions: {
-                            columns: ':visible'
-                            }
+							exportOptions: {
+								columns: ':visible'
+							}
 						},
 						{
 							className: 'btn-default btn-outline-danger',
 							text: `<i class="fas fa-fw fa-lg fa-file-pdf text-danger"></i>`,
 							extend: 'pdfHtml5',
-                            orientation: 'landscape',
-                            pageSize: 'LEGAL',
-                            exportOptions: {
-                            columns: ':visible'
-                            }
+							orientation: 'landscape',
+							pageSize: 'LEGAL',
+							exportOptions: {
+								columns: ':visible'
+							}
 						},
 					]
 				},
@@ -118,19 +116,49 @@
 				bottomStart: 'pageLength',
 			},
 			columnDefs: [{
-					visible: false,
-					targets: [2, 3, 4, 5, 6, 7, 8, 9, 10]
-				},
-			],
+				visible: false,
+				targets: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+			}, ],
 			initComplete: function() {
 				var table = this.api();
 
-				// Add filtering
-				table.columns().every(function() {
-					var column = this;
+                var column = this;
+                var columnIndex = column.index();
+                var columnHeader = table.columns().header()[columnIndex].innerText
 
-					var select = $('<select><option value=""></option></select>')
-						.appendTo($(column.header()))
+                // Add label for the filter
+                $('<label class="mb-0">')
+                    .text(columnHeader)
+                    .appendTo('#columnFilters');
+
+				$('<input type="text" class="form-control" placeholder="Search Serial Number" />')
+					.appendTo($('#columnFilters'))
+					.on('keyup', function() {
+						table
+							.column(0)
+							.search(this.value)
+							.draw();
+					});
+
+
+
+				// Add filtering
+				table.columns(':visible').every(function() {
+                var column = this;
+                var columnIndex = column.index();
+                var columnHeader = table.columns().header()[columnIndex].innerText
+
+                        if (columnIndex === 0) {
+                        return;
+                    }
+
+                $('<label class="mb-0 mt-2">')
+                    .text(columnHeader)
+                    .appendTo('#columnFilters');
+
+					var select = $('<select class="form-control"><option value=""> Pilih ' +
+							columnHeader + '</option></select>')
+						.appendTo($('#columnFilters'))
 						.on('change', function() {
 							var val = $.fn.dataTable.util.escapeRegex(
 								$(this).val()
@@ -155,32 +183,32 @@
 			},
 		});
 
-		$('#unitTable').on('click', '.edit-btn', function() {
-			let unitId = $(this).data('id');
-			let url = editUrl + '/' + unitId;
-			let data = table.row($(this).parents('tr')).data();
-			// Lakukan tindakan edit dengan menggunakan URL dan data
-			console.log('Edit URL:', url);
-			console.log('Data:', data);
-		});
+		// $('#unitTable').on('click', '.edit-btn', function() {
+		// 	let unitId = $(this).data('id');
+		// 	let url = editUrl + '/' + unitId;
+		// 	let data = table.row($(this).parents('tr')).data();
+		// 	// Lakukan tindakan edit dengan menggunakan URL dan data
+		// 	console.log('Edit URL:', url);
+		// 	console.log('Data:', data);
+		// });
 
-		$('#unitTable').on('click', '.delete-btn', function() {
-			let unitId = $(this).data('id');
-			let url = deleteUrl + '/' + unitId;
-			let data = table.row($(this).parents('tr')).data();
-			// Lakukan tindakan delete dengan menggunakan URL dan data
-			console.log('Delete URL:', url);
-			console.log('Data:', data);
-		});
+		// $('#unitTable').on('click', '.delete-btn', function() {
+		// 	let unitId = $(this).data('id');
+		// 	let url = deleteUrl + '/' + unitId;
+		// 	let data = table.row($(this).parents('tr')).data();
+		// 	// Lakukan tindakan delete dengan menggunakan URL dan data
+		// 	console.log('Delete URL:', url);
+		// 	console.log('Data:', data);
+		// });
 
-		$('#unitTable').on('click', '.detail-btn', function() {
-			let unitId = $(this).data('id');
-			let url = detailUrl + '/' + unitId;
-			let data = table.row($(this).parents('tr')).data();
-			// Lakukan tindakan detail dengan menggunakan URL dan data
-			console.log('Detail URL:', url);
-			console.log('Data:', data);
-		});
+		// $('#unitTable').on('click', '.detail-btn', function() {
+		// 	let unitId = $(this).data('id');
+		// 	let url = detailUrl + '/' + unitId;
+		// 	let data = table.row($(this).parents('tr')).data();
+		// 	// Lakukan tindakan detail dengan menggunakan URL dan data
+		// 	console.log('Detail URL:', url);
+		// 	console.log('Data:', data);
+		// });
 	});
 </script>
 @endpush

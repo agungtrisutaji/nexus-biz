@@ -340,13 +340,18 @@ return [
             'icon' => 'fas fa-fw bi bi-speedometer2',
             'submenu' => [
                 [
+                    'text' => 'Staging',
+                    'url' => '/stagings',
+                    'icon' => SUBMENU_ICON,
+                ],
+                [
                     'text' => 'Delivery',
                     'url' => '/deliveries',
                     'icon' => SUBMENU_ICON,
                 ],
                 [
-                    'text' => 'Staging',
-                    'url' => '/stagings',
+                    'text' => 'Deploy',
+                    'url' => '/deploy',
                     'icon' => SUBMENU_ICON,
                 ],
                 [
@@ -450,7 +455,7 @@ return [
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js',
+                    'location' => '//cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js',
                 ],
                 // [
                 //     'type' => 'js',

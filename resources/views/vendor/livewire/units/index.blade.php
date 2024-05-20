@@ -1,17 +1,17 @@
 @extends('components.layouts.app')
 
 @section('content_body')
-	<div>
+@section('content_header_title', 'Units')
+<div>
 		<!-- Button trigger modal -->
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-			Launch demo modal
-		</button>
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#importModal">
-			import
-		</button>
+        <div class="col-md-12">
+            <button type="button" class="btn btn-success waves-effect waves-light float-right" data-toggle="modal"
+                data-target="#exampleModal">
+                <span class="btn-label"><i class="fa fa-plus"></i>
+                </span>Add Unit</button><br><br>
+        </div>
 		<livewire:units.create/>
 		<livewire:units.import/>
-		<div class="container mb-2 rounded-lg border bg-white p-2 shadow-lg">
 			<table id="unitTable" class="table-sm table-border table-hover table-compressed table-striped table" style="width:100%">
 				<thead class="thead-dark">
 					<tr>
@@ -39,7 +39,6 @@
                     @endforeach
 				</tbody>
 			</table>
-		</div>
 	</div>
 @endsection
 
