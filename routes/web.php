@@ -12,6 +12,8 @@ Route::get('/reports', \App\Livewire\Reports::class)->name('reports');
 Route::get('/addresses', \App\Livewire\Addresses::class)->name('addresses');
 
 Route::get('/units', \App\Livewire\Units\Index::class)->name('units.index');
+Route::get('/units/{unit}', \App\Livewire\Units\Detail::class)->name('units.detail');
+Route::get('/units/{unit}/edit', \App\Livewire\Units\Edit::class)->name('units.edit');
 
 
 Route::get('/bills', \App\Livewire\Bills::class)->name('bills');
