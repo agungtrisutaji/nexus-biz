@@ -6,25 +6,26 @@
 	<div class="container-fluid">
 		<!-- Button trigger modal -->
 		<div class="d-flex justify-content-between mb-2 mt-5">
-            {{-- <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Filter</button> --}}
-            <div class="dropdown">
-                <button class="btn btn-info dropdown-toggle" data-toggle="dropdown" type="button" aria-expanded="false">Filter</button>
-                <div class="dropdown-menu">
-                    <form class="px-4 py-3">
-                      <div class="form-group" id="columnFilters">
-                      </div>
-                    </form>
-                </div>
-            </div>
+			{{-- <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Filter</button> --}}
+			<div class="dropdown">
+				<button class="btn btn-info dropdown-toggle" data-toggle="dropdown" type="button" aria-expanded="false">Filter</button>
+				<div class="dropdown-menu">
+					<form class="px-4 py-3">
+						<div class="form-group" id="columnFilters">
+						</div>
+					</form>
+				</div>
+			</div>
 			<button type="button" class="btn btn-success waves-effect waves-light" data-toggle="modal"
 				data-target="#exampleModal">
 				<span class="btn-label"><i class="fa fa-plus"></i>
 				</span>Add Unit</button>
 		</div>
 
+		<livewire:units.edit />
 		<livewire:units.create />
 		<livewire:units.import />
-{{--
+		{{--
         <div class="d-flex justify-content-start">
             <div class="row">
                 <div class="col md-4">
@@ -81,10 +82,10 @@
 	// var detailUnit = '{{ $detailUnit }}';
 	$(document).ready(function() {
 		let table = new DataTable('#unitTable', {
-			stateSave: true,
-			stateSaveParams: function(settings, data) {
-				delete data.search;
-			},
+			// stateSave: true,
+			// stateSaveParams: function(settings, data) {
+			// 	delete data.search;
+			// },
 			columns: [{
 				data: serial
 			}, null, null, null, null, null, null, null, null, null, null, null, {
@@ -159,7 +160,7 @@
 					var column = this;
 					var columnIndex = column.index();
 					var columnHeader = table.columns().header()[columnIndex].innerText
-                    var totalColumns = table.columns().header().length;
+					var totalColumns = table.columns().header().length;
 
 					if (columnIndex === 0) {
 						return;

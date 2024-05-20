@@ -52,13 +52,3 @@
 		</div>
 	</form>
 </div>
-
-@push('js')
-<script>
-    // document.addEventListener('livewire:load', function () {
-    //     Livewire.on('refreshPage', function () {
-    //         location.reload();
-    //     });
-    // });
-</script>
-@endpush
