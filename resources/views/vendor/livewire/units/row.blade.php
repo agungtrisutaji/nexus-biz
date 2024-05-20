@@ -12,5 +12,13 @@
 		<td>{{ $unit->serviceOffer->vga }}</td>
 		<td>{{ $unit->serviceOffer->display }}</td>
 		<td>{{ $unit->status }}</td>
+		<td>
+            <button wire:navigate href="/units/{{ $unit->id }}/edit" class="btn btn-sm btn-outline-success edit-btn"><i
+					class="fas fa-edit"></i></button>
+			<button wire:navigate href="/units/{{ $unit->id }}" class="btn btn-sm btn-outline-danger delete-btn"><i
+					class="fas fa-trash"></i></button>
+			<button wire:navigate href="/units/{{ $unit->id }}" class="btn btn-sm btn-outline-info detail-btn"><i
+					class="fas fa-eye"></i></button>
+		</td>
 	</tr>
 </div>

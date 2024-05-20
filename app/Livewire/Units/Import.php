@@ -41,7 +41,7 @@ class Import extends Component
 
         try {
             Excel::import(new UnitImport($this->selectedService), $this->importFile);
-            session()->flash('success', 'Data unit berhasil diimpor.');
+            session()->flash('unitImported', 'Data unit berhasil diimpor.');
         } catch (\Exception $e) {
             $this->importErrors[] = $e->getMessage();
         }

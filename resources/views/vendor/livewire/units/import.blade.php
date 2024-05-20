@@ -10,9 +10,9 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				@if (session()->has('success'))
+				@if (session()->has('unitImported'))
 					<div class="alert alert-success">
-						{{ session('success') }}
+						{{ session('unitImported') }}
 					</div>
 				@endif
 				@error('importFile')
