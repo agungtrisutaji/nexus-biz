@@ -58,9 +58,6 @@
 							<th scope="col" class="action">Action</th>
 						</tr>
 					</thead>
-					<tfoot>
-						<td></td>
-					</tfoot>
 					<tbody>
 						@foreach ($units as $unit)
 							<livewire:stagings.row wire:poll :unit="$unit" wire:key="{{ $unit->id }}" />
@@ -77,7 +74,8 @@
 <script>
 	$(document).ready(function() {
 		let table = new DataTable('#unitTable', {
-			layout: {
+            responsive: true,
+            layout: {
 				topStart: {
 					buttons: [
 						'colvis',
