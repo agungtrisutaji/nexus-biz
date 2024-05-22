@@ -61,9 +61,6 @@
 						<th scope="col" class="action">Action</th>
 					</tr>
 				</thead>
-				<tfoot>
-					<td></td>
-				</tfoot>
 				<tbody>
 					@foreach ($units as $unit)
 						<livewire:units.row wire:poll :unit="$unit" wire:key="{{ $unit->id }}" />

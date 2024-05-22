@@ -14,10 +14,10 @@
 		<td>{{ $unit->status }}</td>
 		<td>
 			<button data-toggle="modal"
-            data-target="#editModal" wire:click="edit({{ $unit->id }})" class="btn btn-sm btn-outline-success edit-btn"><i
+            data-target="#editModal" wire:click="edit({{ $unit->id }})" class="btn btn-sm btn-outline-success edit-btn" hidden><i
 					class="fas fa-edit"></i></button>
 			<button data-toggle="modal"
-            data-target="#deleteModal" wire:click="deleteUnit({{ $unit->id }})" class="btn btn-sm btn-outline-danger delete-btn"><i
+            data-target="#deleteModal" wire:click="deleteUnit({{ $unit->id }})" class="btn btn-sm btn-outline-danger delete-btn" hidden><i
 					class="fas fa-trash"></i></button>
 			<button wire:navigate href="/units/{{ $unit->id }}" class="btn btn-sm btn-outline-info detail-btn"><i
 					class="fas fa-eye"></i></button>
